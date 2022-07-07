@@ -9,7 +9,7 @@ import { Website } from "./value-objects/website";
 
 export class Author extends TriggerEvents {
   constructor(
-    private _authorId: string,
+    private _authorId: number,
     private _userName: string,
     private _email: string,
     private _name?: string,
@@ -62,8 +62,8 @@ export class Author extends TriggerEvents {
     this._location = this.checkIsNotNull(location);
   }
 
-  public authorid(): string {
-    return AuthorId.fromString(this._authorId);
+  public authorid(): number {
+    return AuthorId.fromNumber(this._authorId);
   }
 
   public userName(): UserName {
@@ -87,6 +87,10 @@ export class Author extends TriggerEvents {
   }
   get location() {
     return this._location;
+  }
+
+  get birthDate() {
+    return this._birthDate;
   }
 
   private checkIsNotNull(errorMessage: string, value?: string) {
